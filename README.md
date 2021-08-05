@@ -7,4 +7,4 @@
 * search page
 * FeedBack
 * Login
-* About the libr
+* About the library 
