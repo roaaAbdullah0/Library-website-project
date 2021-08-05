@@ -1,0 +1,44 @@
+
+
+#bo0{
+	background-image:url("https://www.modelacademy.co.za/wp-content/uploads/grey-background-v1.jpg");
+	
+
+
+}
+
+#he0{
+	font-variant: small-caps;
+  color: rgb(78, 50, 18 );
+  text-align: center;
+}
+#he1{
+	text-align: left;
+	 color: rgb(54, 32, 7);
+font-variant: small-caps;
+	font-weight: bold;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+li {
+  float: left;
+  
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111111;
+}

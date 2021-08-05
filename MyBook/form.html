@@ -1,0 +1,161 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><style>
+body {
+  background-image: url('https://i.imgur.com/tKdZUdk.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+</style>
+<link rel="stylesheet" href="./css/cssForm.css">
+<link rel="stylesheet" href="./css/w3.css">
+
+</head>
+<body id ="bv">
+<form name="feedbackForm" onsubmit="return validateForm()" >
+<h1 id = "h00">Feed Back Form</h1>    
+<div class="container">    
+     
+    <div class="row">    
+      <div class="col-25">    
+        <label for="fname">&emsp;&emsp;&emsp;&emsp;Full Name</label>    
+      </div>    
+      <div class="col-75">    
+         <input type="text" name="name">
+        <div class="error   "   id="nameErr" ></div>  
+      </div>    
+    </div>    
+    <div class="row">    
+      <div class="col-25">    
+        <label for="email">&emsp;&emsp;&emsp;&emsp;Email Address</label>    
+      </div>    
+      <div class="col-75">    
+         <input type="text" name="email">
+        <div class="error" id="emailErr"></div>
+      </div>    
+    </div>       
+    <div class="row">    
+      <div class="col-25">    
+        <label for="sub">&emsp;&emsp;&emsp;&emsp;subject</label>    
+      </div>    
+      <div class="col-75">    
+        <select id="sub" name="sub">    
+          <option>Select</option>    
+          <option value="suggestion">Suggestion</option>    
+          <option value="complaint">Complaint</option>    
+          <option value="idea">Idea</option>    
+          <option value="help">Help</option>       
+        </select>    
+        <div class="error" id="subErr"></div>
+      </div>    
+    </div>    
+    <div class="row">    
+      <div class="col-25">    
+        <label for="feed_back">&emsp;&emsp;&emsp;&emsp;Feed Back</label>    
+      </div>    
+      <div class="col-75">    
+        <textarea id="subject" name="subject" placeholder="Write here .." style="height:200px"></textarea>  
+        <div class="error" id="subjecterr"></div>  
+      </div>    
+    </div>    
+    <div class="row">    
+      <input type="submit" value="Submit">   
+       <button type="button" class="w3-button w3-padding-large w3-blue w3-margin-bottom" onclick="check(this.form)">back</button> 
+    </div>    
+  </form>    
+</div>    
+
+<!---- back to home page ---->
+
+ <script >
+     function check(form)
+     {
+             window.open('index.html')/*back to home page */
+        
+
+     }  
+      
+</script>
+    
+    <!--**************** Javascript to feed back *******************--->
+    <script>
+        // Defining a function to display error message this function use to print error
+        function printError(elemId, hintMsg) {
+
+            document.getElementById(elemId).innerHTML = hintMsg;
+        }
+
+        // Defining a function to validate form 
+        function validateForm() {
+            // Retrieving the values of form elements 
+            var name = document.feedbackForm.name.value;
+            var email = document.feedbackForm.email.value;
+            var subject = document.feedbackForm.sub.value;
+            var feedback = document.feedbackForm.subject.value;
+            
+
+            // Defining error variables with a default value
+            var nameErr = emailErr = subErr = subjecterr  = true;
+
+            // Validate name
+            if (name == "") {
+                printError("nameErr", "Please enter your name");
+            } else {
+                var regex = /^[a-zA-Z\s]+$/;
+                if (regex.test(name) === false) {
+                    printError("nameErr", "Please enter a valid name");
+                } else {
+                    printError("nameErr", "");
+                    nameErr = false;
+                }
+            }
+
+            // Validate email address
+            if (email == "") {
+                printError("emailErr", "Please enter your email address");
+            } else {
+                // Regular expression for basic email validation
+                var regex = /^\S+@\S+\.\S+$/;
+                if (regex.test(email) === false) {
+                    printError("emailErr", "Please enter a valid email address");
+                } else {
+                    printError("emailErr", "");
+                    emailErr = false;
+                }
+            }
+
+
+
+            // Validate subject if selsct then you dont slected 
+            if (subject == "Select") {
+                printError("subErr", "Please select your subject");
+            } else {
+                printError("subErr", "");
+                subErr = false;
+            }
+
+            // Validate feedback , user should be enter feedback
+            if (feedback == "") {
+                printError("subjecterr", "Please select your feedback");
+            } else {
+                printError("subjecterr", "");
+                subjecterr = false;
+            }
+
+            // Prevent the form from being submitted if there are any errors
+            if ((nameErr || emailErr || subErr || subjecterr ) == true) {
+                return false;
+            } else {
+            // go to home page after feedback
+
+                window.open('index.html')
+            }
+        };
+</script>
+
+    
+</body>   
+</html>
